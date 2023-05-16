@@ -7,4 +7,5 @@
     <string name="password">Password</string>
     <string name="login">Log In</string>
     <string name="forgot">Forgot password?</string>
+    <string name="sign">Do not have an account? sign up</string>
 </resources>
