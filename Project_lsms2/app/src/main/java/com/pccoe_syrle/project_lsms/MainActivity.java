@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.recyclerview.widget.RecyclerView;
 import com.pccoe_syrle.project_lsms.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     TextView textView;
     String key = "com.pccoe_lsms.shravani.signup";
     Button login;
-    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
 //        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(R.layout.login_activity);
 
-        getSupportActionBar().hide();
 
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
@@ -53,6 +52,17 @@ public class MainActivity extends AppCompatActivity {
         ss.setSpan(click1, 24,31, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         textView.setText(ss);
         textView.setMovementMethod(LinkMovementMethod.getInstance());
+
+        login.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(MainActivity.this, HomePageActivity.class);
+                intent.putExtra(key,"Homepage");
+                MainActivity.this.startActivity(intent);
+            }
+        });
 
 //        BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
