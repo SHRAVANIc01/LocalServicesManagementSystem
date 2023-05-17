@@ -1,30 +1,26 @@
 package com.pccoe_syrle.project_lsms;
 
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import com.pccoe_syrle.project_lsms.databinding.ActivityMainBinding;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText username,password;
+    TextView textView;
+    String key = "com.pccoe_lsms.shravani.signup";
     Button login;
     private ActivityMainBinding binding;
 
@@ -40,15 +36,24 @@ public class MainActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         login = findViewById(R.id.buttonLogin);
+        textView = findViewById(R.id.switchSign);
 
-        login.setOnClickListener(new View.OnClickListener()
-        {
+        String text = getString(R.string.sign);
+        SpannableString ss = new SpannableString(text);
+
+        ClickableSpan click1 = new ClickableSpan() {
             @Override
-            public void onClick(View v)
-            {
-                new Task().execute();
+            public void onClick(@NonNull View widget) {
+                Intent intent = new Intent(MainActivity.this, signInActivity.class);
+                intent.putExtra(key,"signup kro");
+                MainActivity.this.startActivity(intent);
             }
-        });
+        };
+
+        ss.setSpan(click1, 24,31, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        textView.setText(ss);
+        textView.setMovementMethod(LinkMovementMethod.getInstance());
+
 //        BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -60,30 +65,5 @@ public class MainActivity extends AppCompatActivity {
 //        NavigationUI.setupWithNavController(binding.navView, navController);
     }
 
-    class Task extends AsyncTask<Void ,Void ,Void>{
-        String user, pass, error;
 
-        @Override
-        protected Void doInBackground(Void... voids)
-        {
-            try{
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("mysql://192.168.1.9/lsms","lsms","lsms");
-                Statement st = conn.createStatement();
-                ResultSet resultSet = st.executeQuery("show tables");
-            }
-            catch(Exception e){
-                error = e.toString();
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void unused)
-        {
-            Toast.makeText(MainActivity.this, "showing tables", Toast.LENGTH_SHORT).show();
-            super.onPostExecute(unused);
-        }
-    }
 }
