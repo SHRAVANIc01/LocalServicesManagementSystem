@@ -28,7 +28,7 @@ public class signInActivity extends AppCompatActivity {
         ClickableSpan cs = new ClickableSpan() {
             @Override
             public void onClick(@NonNull View widget) {
-                Intent intent = new Intent(signInActivity.this,MainActivity.class);
+                Intent intent = new Intent(signInActivity.this, loginActivity.class);
                 signInActivity.this.startActivity(intent);
             }
         };

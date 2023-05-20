@@ -33,7 +33,6 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        mSearch = binding.searchBar;
         displayServices = binding.ServicesView;
         displayServices.setHasFixedSize(true);
         ArrayList<ModelClass> listitem = new ArrayList<ModelClass>();
