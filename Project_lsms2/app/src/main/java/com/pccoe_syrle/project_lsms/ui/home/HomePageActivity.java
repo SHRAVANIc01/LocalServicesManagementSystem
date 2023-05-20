@@ -1,4 +1,4 @@
-package com.pccoe_syrle.project_lsms;
+package com.pccoe_syrle.project_lsms.ui.home;
 
 import android.os.Bundle;
 
@@ -20,6 +20,9 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import com.pccoe_syrle.project_lsms.ModelClass;
+import com.pccoe_syrle.project_lsms.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

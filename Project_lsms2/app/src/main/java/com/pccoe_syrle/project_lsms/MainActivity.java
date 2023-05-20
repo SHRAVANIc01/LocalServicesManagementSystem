@@ -2,25 +2,19 @@ package com.pccoe_syrle.project_lsms;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import androidx.recyclerview.widget.RecyclerView;
-import com.pccoe_syrle.project_lsms.databinding.ActivityMainBinding;
+import com.pccoe_syrle.project_lsms.ui.home.HomePageActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText username,password;
-    TextView textView;
+    TextView signSwitchText;
     String key = "com.pccoe_lsms.shravani.signup";
     Button login;
 
@@ -35,23 +29,16 @@ public class MainActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         login = findViewById(R.id.buttonLogin);
-        textView = findViewById(R.id.switchSign);
+        signSwitchText = findViewById(R.id.signTextButton);
 
-        String text = getString(R.string.sign);
-        SpannableString ss = new SpannableString(text);
-
-        ClickableSpan click1 = new ClickableSpan() {
+        signSwitchText.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(@NonNull View widget) {
-                Intent intent = new Intent(MainActivity.this, signInActivity.class);
-                intent.putExtra(key,"signup kro");
-                MainActivity.this.startActivity(intent);
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this,signInActivity.class);
+                i.putExtra(key,"Sign in");
+                MainActivity.this.startActivity(i);
             }
-        };
-
-        ss.setSpan(click1, 24,31, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        textView.setText(ss);
-        textView.setMovementMethod(LinkMovementMethod.getInstance());
+        });
 
         login.setOnClickListener(new View.OnClickListener()
         {

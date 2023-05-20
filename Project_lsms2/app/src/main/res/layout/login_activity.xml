@@ -83,7 +83,18 @@
         android:layout_height="wrap_content"
         android:text="@string/sign"
         android:layout_marginBottom="20sp"
+        android:layout_marginRight="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/signTextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="@string/signinswitch"
+        app:layout_constraintBottom_toBottomOf="@+id/switchSign"
+        app:layout_constraintStart_toEndOf="@+id/switchSign"
+        app:layout_constraintTop_toTopOf="@+id/switchSign" />
 </androidx.constraintlayout.widget.ConstraintLayout>

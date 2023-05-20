@@ -7,8 +7,9 @@
   <string name="password">Password</string>
   <string name="login">Log In</string>
   <string name="forgot">Forgot password?</string>
-  <string name="sign">Do not have an account? sign up</string>
-  <string name="log">Have an account? log in</string>
+  <string name="sign">Do not have an account?</string>
+  <string name="signinswitch">sign in</string>
+  <string name="log">Already have an account? log in</string>
   <string name="signin">Sign in</string>
   <string name="phone">Phone Number</string>
   <string name="address">Address</string>
