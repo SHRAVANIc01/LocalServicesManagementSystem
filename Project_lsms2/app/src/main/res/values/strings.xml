@@ -14,6 +14,7 @@
     <string name="signin">Sign in</string>
     <string name="phone">Phone Number</string>
     <string name="address">Address</string>
+    <string name="email">Email</string>
     <string name="title_activity_home_page">HomePageActivity</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

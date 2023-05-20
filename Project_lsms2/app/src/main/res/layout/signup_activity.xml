@@ -25,7 +25,7 @@
         android:layout_marginRight="48dp"
         android:background="#50FFFFFF"
         android:hint="@string/username"
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         android:padding="12dp"
         android:textColorHint="#67009B"
         android:drawableLeft="@drawable/baseline_person_outline_24"
@@ -33,6 +33,61 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/App_name" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="48dp"
+        android:background="#50FFFFFF"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:padding="12dp"
+        android:textColorHint="#67009B"
+        android:drawableLeft="@drawable/baseline_email_24"
+        android:drawablePadding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username" />
+
+    <EditText
+        android:id="@+id/phoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="48dp"
+        android:background="#50FFFFFF"
+        android:hint="@string/phone"
+        android:inputType="number"
+        android:padding="12dp"
+        android:textColorHint="#67009B"
+        android:drawableLeft="@drawable/baseline_local_phone_24"
+        android:drawablePadding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
+
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="48dp"
+        android:background="#50FFFFFF"
+        android:hint="@string/address"
+        android:inputType="text"
+        android:padding="12dp"
+        android:textColorHint="#67009B"
+        android:drawableLeft="@drawable/baseline_location_on_24"
+        android:drawablePadding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
+
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
@@ -50,42 +105,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/address" />
-
-    <EditText
-        android:id="@+id/phoneNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginRight="48dp"
-        android:background="#50FFFFFF"
-        android:hint="@string/phone"
-        android:inputType="textPassword"
-        android:padding="12dp"
-        android:textColorHint="#67009B"
-        android:drawableLeft="@drawable/baseline_local_phone_24"
-        android:drawablePadding="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
-
-    <EditText
-        android:id="@+id/address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginRight="48dp"
-        android:background="#50FFFFFF"
-        android:hint="@string/address"
-        android:inputType="textPassword"
-        android:padding="12dp"
-        android:textColorHint="#67009B"
-        android:drawableLeft="@drawable/baseline_location_on_24"
-        android:drawablePadding="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
 
     <Button
         android:id="@+id/buttonSign"

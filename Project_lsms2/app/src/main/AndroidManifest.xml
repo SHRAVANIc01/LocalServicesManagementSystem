@@ -12,6 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Project_lsms"
         tools:targetApi="31">
         <activity
@@ -21,7 +22,8 @@
         <activity
             android:name=".loginActivity"
             android:exported="false"
-            android:label="@string/app_name" />
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Design.Light.NoActionBar"/>
         <activity
             android:name=".Start_Checker_Activity"
             android:exported="true"
