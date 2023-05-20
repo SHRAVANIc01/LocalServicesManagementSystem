@@ -1,4 +1,4 @@
-package com.pccoe_syrle.project_lsms.ui.home;
+package com.pccoe_syrle.project_lsms;
 
 import android.os.Bundle;
 
