@@ -4,16 +4,17 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  android:background="#000000">
+  >
 
     <!-- Search Bar -->
     <LinearLayout
-      android:id="@+id/searchBar"
+      android:id="@+id/TopBar"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:padding="16dp">
 
         <EditText
+          android:id="@+id/searchBar"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
@@ -23,6 +24,7 @@
           android:drawablePadding="12dp"
           android:hint="Search"
           android:textColor="#FFFFFF" />
+
 
         <ImageButton
           android:layout_width="wrap_content"
@@ -34,18 +36,20 @@
           android:background="@android:color/transparent" />
 
     </LinearLayout>
+
     <TextView
-      android:id="@+id/discover"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_below="@+id/searchBar"
-      android:layout_alignParentStart="true"
-      android:layout_alignParentEnd="true"
-      android:layout_marginStart="30dp"
-      android:layout_marginTop="31dp"
-      android:layout_marginEnd="269dp"
-      android:text="Discover Services"
-      android:textColor="@color/white" />
+        android:id="@+id/discover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TopBar"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="31dp"
+        android:fontFamily="@font/josefinsansbold"
+        android:text="Discover"
+        android:textColor="#7B7B7B"
+        android:textSize="20dp" />
+
     <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/Services_view"
       android:layout_width="match_parent"
