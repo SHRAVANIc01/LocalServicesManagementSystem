@@ -27,12 +27,9 @@ public class ProfileFragment extends Fragment {
         View root = binding.getRoot();
 
         settingButton = binding.settingsButton;
-        settingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), SettingsActivity.class);
-                getContext().startActivity(intent);
-            }
+        settingButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), SettingsActivity.class);
+            getActivity().startActivity(intent);
         });
         return root;
     }

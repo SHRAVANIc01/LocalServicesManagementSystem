@@ -23,7 +23,7 @@ public class SettingsActivity extends AppCompatActivity {
         settings.add(new ModelClass2(R.drawable.account_person_24,"permissions"));
         settings.add(new ModelClass2(R.drawable.account_person_24,"favourites"));
 
-        ArrayAdapter<ModelClass2> adapter_setting = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,settings);
+        SettingsArrayAdapter adapter_setting = new SettingsArrayAdapter(this, settings);
         settingList.setAdapter(adapter_setting);
     }
 }
