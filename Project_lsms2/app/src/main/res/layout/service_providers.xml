@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/custom_background"
+    android:elevation="4dp"
+    android:orientation="vertical"
+    android:paddingHorizontal="40dp"
+    android:paddingVertical="20dp"
+    app:circularflow_radiusInDP="15dp">
+
+    <ImageView
+        android:id="@+id/profpic"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/account_person_24" />
+
+    <TextView
+        android:id="@+id/providerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:text="Name"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:alpha="0.7"
+        android:layout_marginTop="5dp"
+        android:text="id"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+</LinearLayout>

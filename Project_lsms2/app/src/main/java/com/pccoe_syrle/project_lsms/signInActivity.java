@@ -63,33 +63,30 @@ public class signInActivity extends AppCompatActivity {
                 sphoneNumber = phoneNumber.getText().toString();
                 if(!susername.equals("") && !spassword.equals("") && !semail.equals("") && !saddress.equals("") && !sphoneNumber.equals("")) {
                     Handler handler = new Handler();
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            String[] field = new String[5];
-                            field[0] = "username";
-                            field[1] = "phonenumber";
-                            field[2] = "address";
-                            field[3] = "email";
-                            field[4] = "password";
+                    handler.post(() -> {
+                        String[] field = new String[5];
+                        field[0] = "username";
+                        field[1] = "phonenumber";
+                        field[2] = "address";
+                        field[3] = "email";
+                        field[4] = "password";
 
-                            String[] data = new String[5];
-                            data[0] = susername;
-                            data[1] = sphoneNumber;
-                            data[2] = saddress;
-                            data[3] = semail;
-                            data[4] = spassword;
+                        String[] data = new String[5];
+                        data[0] = susername;
+                        data[1] = sphoneNumber;
+                        data[2] = saddress;
+                        data[3] = semail;
+                        data[4] = spassword;
 
-                            PutData pd = new PutData("http://192.168.1.5/Loginsignin/signup.php","POST",field,data);
-                            if (pd.startPut()){
-                                if(pd.onComplete()){
-                                    String result = pd.getResult();
-                                    if(result.equals("Sign up Success")){
-                                        Toast.makeText(signInActivity.this, result, Toast.LENGTH_SHORT).show();
-                                    }
-                                    else {
-                                        Toast.makeText(signInActivity.this, result, Toast.LENGTH_SHORT).show();
-                                    }
+                        PutData pd = new PutData("http://192.168.1.5/Loginsignin/signup.php","POST",field,data);
+                        if (pd.startPut()){
+                            if(pd.onComplete()){
+                                String result = pd.getResult();
+                                if(result.equals("Sign up Success")){
+                                    Toast.makeText(signInActivity.this, result, Toast.LENGTH_SHORT).show();
+                                }
+                                else {
+                                    Toast.makeText(signInActivity.this, result, Toast.LENGTH_SHORT).show();
                                 }
                             }
                         }

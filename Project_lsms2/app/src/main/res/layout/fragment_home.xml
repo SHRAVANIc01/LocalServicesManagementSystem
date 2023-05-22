@@ -11,7 +11,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="1200dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -59,6 +59,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/trendingButton"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -108,10 +109,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="15dp"
                     android:fontFamily="@font/josefinsansbold"
-                    android:text="Top Rated Services"
-                    android:textSize="20sp" />
+                    android:text="Top Rated Service Providers"
+                    android:textSize="18sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/topRated"
@@ -140,6 +141,10 @@
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"/>
         </LinearLayout>
     </ScrollView>
 
