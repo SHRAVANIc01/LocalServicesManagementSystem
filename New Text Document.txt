@@ -1,0 +1,17 @@
+Home page :
+discover
+recently viewed
+trending
+top rated
+my orders
+
+
+
+
+
+
+
+
+settings:
+saved cards
+notification settings
