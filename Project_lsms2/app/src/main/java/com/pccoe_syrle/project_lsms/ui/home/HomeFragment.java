@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
     EditText mSearch;
-    RecyclerView displayServices;
+    RecyclerView displayServices, topRated, recevetlyViewed;
     private FragmentHomeBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -34,6 +34,8 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
 
         displayServices = binding.ServicesView;
+        topRated = binding.topRated;
+        recevetlyViewed = binding.recentlyViewed;
         displayServices.setHasFixedSize(true);
         ArrayList<ModelClass> listitem = new ArrayList<ModelClass>();
 
@@ -46,6 +48,31 @@ public class HomeFragment extends Fragment {
         displayServices.setLayoutManager(llm);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(listitem);
         displayServices.setAdapter(adapter);
+
+        ArrayList<ModelClass> listitem2 = new ArrayList<ModelClass>();
+
+        listitem2.add(new ModelClass("Hello","3", R.drawable.baseline_person_outline_24));
+        listitem2.add(new ModelClass("Bello","2",R.drawable.baseline_person_outline_24));
+        listitem2.add(new ModelClass("Mello","1",R.drawable.baseline_person_outline_24));
+        listitem2.add(new ModelClass("Khelo","0",R.drawable.baseline_person_outline_24));
+
+        LinearLayoutManager llm2 = new LinearLayoutManager(root.getContext(),LinearLayoutManager.HORIZONTAL,false);
+        RecyclerViewAdapter adap = new RecyclerViewAdapter(listitem2);
+        topRated.setLayoutManager(llm2);
+        topRated.setAdapter(adap);
+
+        ArrayList<ModelClass> listitem3 = new ArrayList<ModelClass>();
+
+        listitem3.add(new ModelClass("Hello","3", R.drawable.baseline_person_outline_24));
+        listitem3.add(new ModelClass("Bello","2",R.drawable.baseline_person_outline_24));
+        listitem3.add(new ModelClass("Mello","1",R.drawable.baseline_person_outline_24));
+        listitem3.add(new ModelClass("Khelo","0",R.drawable.baseline_person_outline_24));
+
+        LinearLayoutManager llm3 = new LinearLayoutManager(root.getContext(),LinearLayoutManager.HORIZONTAL,false);
+        RecyclerViewAdapter adapter1 = new RecyclerViewAdapter(listitem3);
+        recevetlyViewed.setLayoutManager(llm3);
+        recevetlyViewed.setAdapter(adapter1);
+
         return root;
     }
 
