@@ -1,5 +1,6 @@
 package com.pccoe_syrle.project_lsms;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -37,30 +38,23 @@ public class testFetchActivity extends AppCompatActivity {
         button = findViewById(R.id.testFetch);
         textView = findViewById(R.id.testview);
         people = new ServiceProviderClass();
+        sharedPreferences = getSharedPreferences("LSMSshared", MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("email","anish@gmail.com");
+        editor.apply();
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                String url ="http://192.168.1.5/Loginsignin/fetchData.php";
+                String url ="http://192.168.1.5/Loginsignin/fetchProfile.php";
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-//                                textView.setText(response);
-                                try {
-                                    JSONArray jsonArray = new JSONArray(response);
-                                    JSONObject jsonObject = jsonArray.getJSONObject(1);
-                                    people.setName(jsonObject.getString("name"));
-                                    people.setPhone(jsonObject.getInt("phonenumber"));
-                                    people.setAddress(jsonObject.getString("address"));
-                                    people.setEmail(jsonObject.getString("email"));
-                                    people.setService(jsonObject.getString("service"));
-                                    textView.setText(people.getService());
-                                } catch (JSONException e) {
-                                    throw new RuntimeException(e);
-                                }
+                                textView.setText(response);
                             }
                         }, new Response.ErrorListener() {
                     @Override
@@ -70,7 +64,7 @@ public class testFetchActivity extends AppCompatActivity {
                 }){
                     protected Map<String, String> getParams(){
                         Map<String, String> paramV = new HashMap<>();
-//                        paramV.put("username","hello");
+                        paramV.put("Email", sharedPreferences.getString("email",""));
                         return paramV;
                     }
                 };

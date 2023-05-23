@@ -21,7 +21,7 @@ import com.vishnusivadas.advanced_httpurlconnection.PutData;
 public class signInActivity extends AppCompatActivity {
     TextView login;
 
-    EditText username,password,email,address,phoneNumber;
+    EditText username,password,email,address,phoneNumber,mname;
     Button signup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,7 @@ public class signInActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         address = findViewById(R.id.address);
         phoneNumber = findViewById(R.id.phoneNumber);
+        mname = findViewById(R.id.name);
         signup = findViewById(R.id.buttonSign);
         String text = getString(R.string.log);
         SpannableString ss = new SpannableString(text);
@@ -55,8 +56,9 @@ public class signInActivity extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String susername,spassword,semail,saddress,sphoneNumber;
+                String susername,spassword,sname,semail,saddress,sphoneNumber;
                 susername = username.getText().toString();
+                sname = mname.getText().toString();
                 spassword = password.getText().toString();
                 semail = email.getText().toString();
                 saddress = address.getText().toString();
@@ -64,19 +66,21 @@ public class signInActivity extends AppCompatActivity {
                 if(!susername.equals("") && !spassword.equals("") && !semail.equals("") && !saddress.equals("") && !sphoneNumber.equals("")) {
                     Handler handler = new Handler();
                     handler.post(() -> {
-                        String[] field = new String[5];
-                        field[0] = "username";
-                        field[1] = "phonenumber";
-                        field[2] = "address";
-                        field[3] = "email";
-                        field[4] = "password";
+                        String[] field = new String[6];
+                        field[0] = "Username";
+                        field[1] = "Name";
+                        field[2] = "Phonenumber";
+                        field[3] = "Address";
+                        field[4] = "Email";
+                        field[5] = "Password";
 
-                        String[] data = new String[5];
+                        String[] data = new String[6];
                         data[0] = susername;
-                        data[1] = sphoneNumber;
-                        data[2] = saddress;
-                        data[3] = semail;
-                        data[4] = spassword;
+                        data[1] = sname;
+                        data[2] = sphoneNumber;
+                        data[3] = saddress;
+                        data[4] = semail;
+                        data[5] = spassword;
 
                         PutData pd = new PutData("http://192.168.1.5/Loginsignin/signup.php","POST",field,data);
                         if (pd.startPut()){

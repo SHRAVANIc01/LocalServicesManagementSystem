@@ -1,17 +1,12 @@
-package com.pccoe_syrle.project_lsms.ui;
+package com.pccoe_syrle.project_lsms;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.pccoe_syrle.project_lsms.R;
-import com.pccoe_syrle.project_lsms.RecyclerViewAdapter;
-import com.pccoe_syrle.project_lsms.ServiceProviderClass;
 
 import java.util.List;
 

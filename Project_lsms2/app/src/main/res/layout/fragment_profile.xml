@@ -18,26 +18,28 @@
         android:id="@+id/profile_picture"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/user_image_profile"
         app:civ_border_width="1dp"
         app:civ_border_color="#000000"/>
     <TextView
+        android:id="@+id/profile_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="Example Username"
-        android:textSize="28sp"
+        android:layout_marginTop="-5dp"
+        android:textSize="32sp"
         android:fontFamily="@font/josefinsansbold"/>
     <TextView
+        android:id="@+id/profile_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="example@email.com"
         android:fontFamily="@font/josefinsansbold"
         android:textSize="16sp"
-        android:alpha="0.7"/>
+        android:alpha="0.6"/>
     </LinearLayout>
 
     <LinearLayout
@@ -77,10 +79,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/josefinsansbold"
                     android:text="Settings" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/balance_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -99,9 +103,11 @@
                     android:src="@drawable/baseline_account_balance_wallet_24" />
 
                 <TextView
+                    android:id="@+id/wallet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/josefinsansbold"
                     android:text="Wallet" />
             </LinearLayout>
 
@@ -121,13 +127,14 @@
                     android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/baseline_settings_24" />
+                    android:src="@drawable/baseline_devices_fold_24" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Settings" />
+                    android:fontFamily="@font/josefinsansbold"
+                    android:text="My Orders" />
             </LinearLayout>
         </LinearLayout>
 
@@ -142,15 +149,16 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="Name"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textAlignment="viewStart"
                 android:fontFamily="@font/josefinsansbold"/>
             <TextView
+                android:id="@+id/profile_name"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="xyz yzx xzy"
                 android:textAlignment="viewEnd"
-                android:textSize="14sp"/>
+                android:textSize="16sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -167,6 +175,7 @@
                 android:textAlignment="viewStart"
                 android:fontFamily="@font/josefinsansbold"/>
             <TextView
+                android:id="@+id/profile_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="0123456789"
@@ -187,6 +196,7 @@
                 android:textAlignment="viewStart"
                 android:fontFamily="@font/josefinsansbold"/>
             <TextView
+                android:id="@+id/profile_address"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Some random adress"
@@ -195,22 +205,22 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
+            android:alpha="0.7"
             android:layout_marginBottom="20dp"
+            android:layout_gravity="center_horizontal"
             android:orientation="horizontal">
+
             <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="Gender"
-                android:textSize="14sp"
-                android:textAlignment="viewStart"
-                android:fontFamily="@font/josefinsansbold"/>
-            <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Male"
+                android:text="Your Account is Secure"
+                android:fontFamily="@font/josefinsansbold"
+                android:drawableEnd="@drawable/baseline_security_24"
+                android:drawablePadding="10dp"
                 android:layout_gravity="end"
                 android:textSize="14sp"/>
         </LinearLayout>

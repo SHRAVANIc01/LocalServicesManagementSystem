@@ -4,9 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,12 +19,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.pccoe_syrle.project_lsms.DBhelper.DBhelperService;
 import com.pccoe_syrle.project_lsms.ModelClass;
 import com.pccoe_syrle.project_lsms.R;
 import com.pccoe_syrle.project_lsms.RecyclerViewAdapter;
 import com.pccoe_syrle.project_lsms.ServiceProviderClass;
 import com.pccoe_syrle.project_lsms.databinding.FragmentHomeBinding;
-import com.pccoe_syrle.project_lsms.ui.ServiceProviderAdapter;
+import com.pccoe_syrle.project_lsms.ServiceProviderAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -57,47 +56,9 @@ public class HomeFragment extends Fragment {
         displayServices.setHasFixedSize(true);
         topRated.setHasFixedSize(true);
         recevetlyViewed.setHasFixedSize(true);
-        ArrayList<ServiceProviderClass> listitem2 = new ArrayList<ServiceProviderClass>();
+        ArrayList<ServiceProviderClass> listitem2 = DBhelperService.fetchData(getContext());
         people = new ServiceProviderClass();
         trending = binding.trendingButton;
-
-        RequestQueue queue = Volley.newRequestQueue(getContext());
-        String url ="http://192.168.1.5/Loginsignin/fetchData.php";
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                try {
-                    jsonArray = new JSONArray(response);
-                    for(int i =0;i<jsonArray.length();i++) {
-                        JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        String name = jsonObject.getString("name");
-                        long phone = jsonObject.getInt("phonenumber");
-                        String adrs = jsonObject.getString("address");
-                        String email = jsonObject.getString("email");
-                        String service = jsonObject.getString("service");
-
-                        listitem2.add(new ServiceProviderClass(name, email, adrs, service, phone));
-                    }
-                } catch (JSONException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
-            }
-        }){
-            protected Map<String, String> getParams(){
-                Map<String, String> paramV = new HashMap<>();
-                        paramV.put("username","hello");
-                return paramV;
-            }
-        };
-        queue.add(stringRequest);
-
 
         ArrayList<ModelClass> listitem = new ArrayList<>();
 
