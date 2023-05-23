@@ -1,5 +1,8 @@
 package com.pccoe_syrle.project_lsms;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +45,28 @@ public class ServiceProviderAdapter extends RecyclerView.Adapter<ServiceProvider
 
         public ServiceHolder(@NonNull View itemView) {
             super(itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Show a confirmation dialogue
+                    AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
+                    builder.setMessage("Do you want to buy this service?")
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    ServiceProviderClass serviceProvider = mList.get(getAdapterPosition());
+
+                                    Intent intent = new Intent(itemView.getContext(), ServiceDetailsActivity.class);
+                                    itemView.getContext().startActivity(intent);
+                                }
+                            })
+                            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                }
+                            });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+            });
             name = itemView.findViewById(R.id.providerName);
             service = itemView.findViewById(R.id.service);
         }

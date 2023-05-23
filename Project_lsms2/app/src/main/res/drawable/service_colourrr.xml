@@ -1,0 +1,6 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <size android:height="60dp"
+        android:width="60dp"/>
+    <solid android:color="#92A9FD" /> <!-- Set a custom background color -->
+    <corners android:radius="20dp" /> <!-- Set the radius to create curves -->
+</shape>

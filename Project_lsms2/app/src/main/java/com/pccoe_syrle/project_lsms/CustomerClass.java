@@ -3,7 +3,24 @@ package com.pccoe_syrle.project_lsms;
 public class CustomerClass {
 
     private String name,email,address,username;
-    long phone;
+    long phone, balance;
+
+    public long getBalance() {
+        return balance;
+    }
+
+    public void setBalance(long balance) {
+        this.balance = balance;
+    }
+
+    public CustomerClass(String name, String email, String address, String username, long phone, long balance) {
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.username = username;
+        this.phone = phone;
+        this.balance = balance;
+    }
 
     public CustomerClass(String name, String email, String address, String username, long phone) {
         this.name = name;

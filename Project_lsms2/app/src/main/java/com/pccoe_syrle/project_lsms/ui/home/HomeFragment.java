@@ -13,85 +13,84 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.pccoe_syrle.project_lsms.DBhelper.DBhelperService;
 import com.pccoe_syrle.project_lsms.ModelClass;
 import com.pccoe_syrle.project_lsms.R;
 import com.pccoe_syrle.project_lsms.RecyclerViewAdapter;
+import com.pccoe_syrle.project_lsms.ServiceProviderAdapter;
 import com.pccoe_syrle.project_lsms.ServiceProviderClass;
 import com.pccoe_syrle.project_lsms.databinding.FragmentHomeBinding;
-import com.pccoe_syrle.project_lsms.ServiceProviderAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class HomeFragment extends Fragment {
     JSONArray jsonArray;
     LinearLayout trending;
-    RecyclerView displayServices, topRated, recevetlyViewed;
+    RecyclerView displayServices, topRated, recentlyViewed;
     private FragmentHomeBinding binding;
     ServiceProviderClass people;
+    ServiceProviderAdapter serviceProviderAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         displayServices = binding.ServicesView;
         topRated = binding.topRated;
-        recevetlyViewed = binding.recentlyViewed;
+        recentlyViewed = binding.recentlyViewed;
         displayServices.setHasFixedSize(true);
         topRated.setHasFixedSize(true);
-        recevetlyViewed.setHasFixedSize(true);
-        ArrayList<ServiceProviderClass> listitem2 = DBhelperService.fetchData(getContext());
+        recentlyViewed.setHasFixedSize(true);
+        ArrayList<ServiceProviderClass> serviceProviderList = new ArrayList<>();
         people = new ServiceProviderClass();
         trending = binding.trendingButton;
 
-        ArrayList<ModelClass> listitem = new ArrayList<>();
-
-        listitem.add(new ModelClass("Hello","3", R.drawable.baseline_person_outline_24));
-        listitem.add(new ModelClass("Bello","2",R.drawable.baseline_person_outline_24));
-        listitem.add(new ModelClass("Mello","1",R.drawable.baseline_person_outline_24));
-        listitem.add(new ModelClass("Khelo","0",R.drawable.baseline_person_outline_24));
-
-        LinearLayoutManager llm = new LinearLayoutManager(root.getContext(),LinearLayoutManager.HORIZONTAL,false);
+        LinearLayoutManager llm = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL, false);
         topRated.setLayoutManager(llm);
-        ServiceProviderAdapter adapter = new ServiceProviderAdapter(listitem2);
-        topRated.setAdapter(adapter);
+        serviceProviderAdapter = new ServiceProviderAdapter(serviceProviderList);
+        topRated.setAdapter(serviceProviderAdapter);
 
-        listitem2.add(people);
-
-        LinearLayoutManager llm2 = new LinearLayoutManager(root.getContext(),LinearLayoutManager.HORIZONTAL,false);
-        RecyclerViewAdapter adap = new RecyclerViewAdapter(listitem);
+        LinearLayoutManager llm2 = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL, false);
+        RecyclerViewAdapter adap = new RecyclerViewAdapter(getDummyModelList());
         displayServices.setLayoutManager(llm2);
         displayServices.setAdapter(adap);
 
-        ArrayList<ModelClass> listitem3 = new ArrayList<ModelClass>();
+        LinearLayoutManager llm3 = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL, false);
+        RecyclerViewAdapter adapter1 = new RecyclerViewAdapter(getDummyModelList());
+        recentlyViewed.setLayoutManager(llm3);
+        recentlyViewed.setAdapter(adapter1);
 
-        listitem3.add(new ModelClass("Hello","3", R.drawable.baseline_person_outline_24));
-        listitem3.add(new ModelClass("Bello","2",R.drawable.baseline_person_outline_24));
-        listitem3.add(new ModelClass("Mello","1",R.drawable.baseline_person_outline_24));
-        listitem3.add(new ModelClass("Khelo","0",R.drawable.baseline_person_outline_24));
+        DBhelperService.fetchData(getContext(), new DBhelperService.DataCallback() {
+            @Override
+            public void onDataFetched(ArrayList<ServiceProviderClass> listitem) {
+                serviceProviderList.addAll(listitem);
+                serviceProviderAdapter.notifyDataSetChanged();
+            }
 
-        LinearLayoutManager llm3 = new LinearLayoutManager(root.getContext(),LinearLayoutManager.HORIZONTAL,false);
-        RecyclerViewAdapter adapter1 = new RecyclerViewAdapter(listitem3);
-        recevetlyViewed.setLayoutManager(llm3);
-        recevetlyViewed.setAdapter(adapter1);
+            @Override
+            public void onError(String errorMessage) {
+                Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return root;
+    }
+
+    private ArrayList<ModelClass> getDummyModelList() {
+        ArrayList<ModelClass> listitem = new ArrayList<>();
+        listitem.add(new ModelClass("Home Cleaning" , R.drawable.baseline_cleaning_services_24));
+        listitem.add(new ModelClass("Designing" , R.drawable.baseline_design_services_24));
+        listitem.add(new ModelClass("Electrician Service", R.drawable.baseline_electrical_services_24));
+        listitem.add(new ModelClass("Home Repair", R.drawable.baseline_home_repair_service_24));
+        listitem.add(new ModelClass("Medical", R.drawable.baseline_medical_services_24));
+        return listitem;
     }
 
     @Override

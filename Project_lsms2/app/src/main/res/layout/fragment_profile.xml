@@ -234,6 +234,18 @@
         android:backgroundTint="#D0FEFD"
         android:textColor="#004B94"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:paddingHorizontal="40dp"/>
+
+    <TextView
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/josefinsansbold"
+        android:text="Log Out"
+        android:textColor="#FF99BC"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="170dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </LinearLayout>

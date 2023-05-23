@@ -30,9 +30,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.pccoe_syrle.project_lsms.CustomerClass;
+import com.pccoe_syrle.project_lsms.MainActivity;
 import com.pccoe_syrle.project_lsms.SettingsActivity;
 import com.pccoe_syrle.project_lsms.WalletActivity;
 import com.pccoe_syrle.project_lsms.databinding.FragmentProfileBinding;
+import com.pccoe_syrle.project_lsms.loginActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,10 +47,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileFragment extends Fragment {
     FragmentProfileBinding binding;
+    long bal;
     Bitmap bitmap;
     CircleImageView profilePic;
     CustomerClass profile;
-    TextView profileName, profileEmail, profilePhone, profileAddress,profileUsername;
+    TextView profileName, profileEmail, profilePhone, profileAddress,profileUsername,balance,logout;
     LinearLayout settingButton, balanceButton;
     SharedPreferences sharedPreferences;
 
@@ -65,6 +68,8 @@ public class ProfileFragment extends Fragment {
         profilePhone = binding.profilePhone;
         profileUsername = binding.profileUsername;
         balanceButton = binding.balanceButton;
+        balance = binding.wallet;
+        logout = binding.logout;
         profile = new CustomerClass();
         sharedPreferences = getActivity().getSharedPreferences("LSMSshared", Context.MODE_PRIVATE);
 
@@ -79,6 +84,7 @@ public class ProfileFragment extends Fragment {
                     JSONObject jsonObject = new JSONObject(response);
                     if(jsonObject.getString("status").equals("success")) {
                         String name = jsonObject.getString("name");
+                        bal = jsonObject.getInt("balance");
                         long phone = jsonObject.getInt("phonenumber");
                         String adrs = jsonObject.getString("address");
                         String email = jsonObject.getString("email");
@@ -89,6 +95,11 @@ public class ProfileFragment extends Fragment {
                         profileAddress.setText(profile.getAddress());
                         profileEmail.setText(profile.getEmail());
                         profilePhone.setText(profile.getPhone());
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("balance",bal+"");
+                        editor.putString("name",name);
+                        editor.apply();
+                        balance.setText(bal+"");
                     }
                     else{
                         Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
@@ -144,6 +155,12 @@ public class ProfileFragment extends Fragment {
         balanceButton.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), WalletActivity.class);
             getActivity().startActivity(intent);
+        });
+
+        logout.setOnClickListener(v -> {
+            Intent logout= new Intent(getContext(), loginActivity.class);
+            getActivity().startActivity(logout);
+            getActivity().finish();
         });
 
         return root;

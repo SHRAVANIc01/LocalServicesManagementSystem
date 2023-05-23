@@ -29,7 +29,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.MyViewHolder holder, int position) {
         holder.names.setText(mList.get(position).getName());
-        holder.ids.setText(mList.get(position).getId());
+        holder.imgs.setImageResource(mList.get(position).getImg());
     }
 
     @Override
@@ -38,12 +38,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView names, ids;
+        TextView names;
         ImageView imgs;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             names = itemView.findViewById(R.id.Names);
-            ids = itemView.findViewById(R.id.ids);
             imgs = itemView.findViewById(R.id.imgs);
         }
     }

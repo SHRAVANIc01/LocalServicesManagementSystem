@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/custom_background"
+    android:background="@drawable/service_colourrr"
     android:elevation="4dp"
     android:orientation="vertical"
+    android:layout_margin="10dp"
     android:paddingHorizontal="40dp"
     android:paddingVertical="20dp"
     app:circularflow_radiusInDP="15dp">
@@ -25,18 +26,7 @@
       android:layout_gravity="center_horizontal"
       android:layout_marginTop="15dp"
       android:text="Name"
-      android:textColor="#000000"
+      android:textColor="#FFFFFF"
       android:textSize="16sp" />
-
-  <TextView
-      android:id="@+id/ids"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_gravity="center_horizontal"
-      android:alpha="0.7"
-      android:layout_marginTop="5dp"
-      android:text="id"
-      android:textColor="#000000"
-      android:textSize="14sp" />
 
 </LinearLayout>

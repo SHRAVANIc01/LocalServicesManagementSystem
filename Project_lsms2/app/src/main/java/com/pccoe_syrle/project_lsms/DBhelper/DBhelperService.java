@@ -15,57 +15,56 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class DBhelperService {
 
-    public static JSONArray jsonArray;
+    public interface DataCallback {
+        void onDataFetched(ArrayList<ServiceProviderClass> listitem);
 
-    private static ArrayList<ServiceProviderClass> listitem;
+        void onError(String errorMessage);
+    }
 
-    public static ArrayList<ServiceProviderClass> fetchData(Context context){
+    public static void fetchData(Context context, final DataCallback callback) {
 
-        listitem = new ArrayList<>();
+        ArrayList<ServiceProviderClass> listitem = new ArrayList<>();
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url ="http://192.168.1.5/Loginsignin/fetchData.php";
+        String url = "http://192.168.1.5/Loginsignin/fetchData.php";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
                 try {
-                    jsonArray = new JSONArray(response);
-                    for(int i =0;i<5;i++) {
+                    JSONArray jsonArray = new JSONArray(response);
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         String name = jsonObject.getString("name");
-                        long phone = jsonObject.getInt("phonenumber");
-                        String adrs = jsonObject.getString("address");
+                        long phone = jsonObject.getLong("phonenumber");
+                        String address = jsonObject.getString("address");
                         String email = jsonObject.getString("email");
                         String service = jsonObject.getString("service");
 
-                        listitem.add(new ServiceProviderClass(name, email, adrs, service, phone));
+                        listitem.add(new ServiceProviderClass(name, email, address, service, phone));
                     }
+                    callback.onDataFetched(listitem);
                 } catch (JSONException e) {
-                    throw new RuntimeException(e);
+                    callback.onError("Error parsing JSON data");
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                callback.onError("Something went wrong");
             }
-        }){
-            protected Map<String, String> getParams(){
+        }) {
+            protected Map<String, String> getParams() {
                 Map<String, String> paramV = new HashMap<>();
-                paramV.put("username","hello");
+                paramV.put("username", "hello");
                 return paramV;
             }
         };
         queue.add(stringRequest);
-
-        return listitem;
     }
 }
