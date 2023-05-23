@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="#C7F0FF"
+  android:background="@drawable/gr25_1500_800"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   >
 
@@ -38,7 +38,7 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/josefinsansbold"
                     android:text="Discover"
-                    android:textColor="#5B5B5B"
+                    android:textColor="#000000"
                     android:textSize="28sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -73,6 +73,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:fontFamily="@font/josefinsansbold"
+                        android:textColor="#000000"
                         android:paddingTop="10dp"
                         android:text="Trending"
                         android:textSize="24sp" />
@@ -93,6 +94,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:fontFamily="@font/josefinsansbold"
+                        android:textColor="#000000"
                         android:paddingTop="10dp"
                         android:text="My Orders"
                         android:textSize="24sp" />
@@ -112,6 +114,7 @@
                     android:layout_marginLeft="15dp"
                     android:fontFamily="@font/josefinsansbold"
                     android:text="Top Rated Service Providers"
+                    android:textColor="#000000"
                     android:textSize="18sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -131,6 +134,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
+                    android:textColor="#000000"
                     android:fontFamily="@font/josefinsansbold"
                     android:text="Recently Viewed"
                     android:textSize="20sp" />
