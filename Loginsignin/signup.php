@@ -1,9 +1,11 @@
 <?php
 require "DataBase.php";
 $db = new DataBase();
-if (isset($_POST['username']) && isset($_POST['phonenumber']) && isset($_POST['address']) && isset($_POST['email']) && isset($_POST['password'])) {
+if (isset($_POST['Username']) && isset($_POST['Name']) && isset($_POST['Phonenumber']) && isset($_POST['Address']) && isset($_POST['Email']) && isset($_POST['Password'])) {
     if ($db->dbConnect()) {
-        if ($db->signUp("users", $_POST['username'], $_POST['phonenumber'], $_POST['address'], $_POST['email'], $_POST['password'])) {
+        $db->addProfile("customer", $_POST['Name'], $_POST['Phonenumber'], $_POST['Address'], $_POST['Email']);
+
+        if ($db->signUp("users", $_POST['Username'], $_POST['Phonenumber'], $_POST['Address'], $_POST['Email'], $_POST['Password'])) {
             echo "Sign Up Success";
         } else echo "Sign up Failed";
     } else echo "Error: Database connection";

@@ -1,7 +1,6 @@
 <?php
 require "DataBase.php";
 $db = new DataBaseConfig();
-$i = 1;
 $result = array();
 $send = array();
 $table = "service_providers";

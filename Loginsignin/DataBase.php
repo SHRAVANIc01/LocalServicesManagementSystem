@@ -10,6 +10,7 @@ class DataBase
     protected $username;
     protected $password;
     protected $databasename;
+    public $num;
 
     public function __construct()
     {
@@ -38,12 +39,12 @@ class DataBase
     {
         $username = $this->prepareData($username);
         $password = $this->prepareData($password);
-        $this->sql = "select * from " . $table . " where username = '" . $username . "'";
+        $this->sql = "select * from " . $table . " where Username = '" . $username . "'";
         $result = mysqli_query($this->connect, $this->sql);
         $row = mysqli_fetch_assoc($result);
         if (mysqli_num_rows($result) != 0) {
-            $dbusername = $row['username'];
-            $dbpassword = $row['password'];
+            $dbusername = $row['Username'];
+            $dbpassword = $row['Password'];
             if ($dbusername == $username && password_verify($password, $dbpassword)) {
                 $login = true;
             } else $login = false;
@@ -55,21 +56,29 @@ class DataBase
     function signUp($table, $username, $phonenumber, $address, $email, $password)
     {
         $username = $this->prepareData($username);
-        $phonenumber = $this->prepareData($username);
+        $phonenumber = $this->prepareData($phonenumber);
         $address = $this->prepareData($address);
         $email = $this->prepareData($email);
         $password = $this->prepareData($password);
         $password = password_hash($password, PASSWORD_DEFAULT);
         $this->sql =
-            "INSERT INTO " . $table . " (username, phonenumber, address, email, password) VALUES ('" . $username . "','" . $phonenumber . "','" . $address . "','" . $email  . "','" . $password . "' )";
+            "INSERT INTO " . $table . " (Username, Phonenumber, Address, Email, Password) VALUES ('" . $username . "','" . $phonenumber . "','" . $address . "','" . $email  . "','" . $password . "' )";
         if (mysqli_query($this->connect, $this->sql)) {
             return true;
         } else return false;
     }
 
-    function getData()
+    function addProfile($table, $name, $phonenumber, $address, $email)
     {
-        
+        $name = $this->prepareData($name);
+        $phonenumber = $this->prepareData($phonenumber);
+        $address = $this->prepareData($address);
+        $email = $this->prepareData($email);
+        $this->sql =
+            "INSERT INTO " . $table . " (Name, phonenumber, address, email) VALUES ('" . $name . "','" . $phonenumber . "','" . $address . "','" . $email  . "' )";
+        if (mysqli_query($this->connect, $this->sql)) {
+            return true;
+        } else return false;
     }
 
 }
