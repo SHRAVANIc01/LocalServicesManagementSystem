@@ -74,7 +74,7 @@ public class ProfileFragment extends Fragment {
         sharedPreferences = getActivity().getSharedPreferences("LSMSshared", Context.MODE_PRIVATE);
 
         RequestQueue queue = Volley.newRequestQueue(getContext());
-        String url ="http://192.168.1.5/Loginsignin/fetchProfile.php";
+        String url ="http://192.168.167.140/Loginsignin/fetchProfile.php";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -84,8 +84,8 @@ public class ProfileFragment extends Fragment {
                     JSONObject jsonObject = new JSONObject(response);
                     if(jsonObject.getString("status").equals("success")) {
                         String name = jsonObject.getString("name");
-                        bal = jsonObject.getInt("balance");
-                        long phone = jsonObject.getInt("phonenumber");
+                        bal = jsonObject.getLong("balance");
+                        long phone = jsonObject.getLong("phonenumber");
                         String adrs = jsonObject.getString("address");
                         String email = jsonObject.getString("email");
 
@@ -96,7 +96,7 @@ public class ProfileFragment extends Fragment {
                         profileEmail.setText(profile.getEmail());
                         profilePhone.setText(profile.getPhone());
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("balance",bal+"");
+                        editor.putLong("balance",bal);
                         editor.putString("name",name);
                         editor.apply();
                         balance.setText(bal+"");

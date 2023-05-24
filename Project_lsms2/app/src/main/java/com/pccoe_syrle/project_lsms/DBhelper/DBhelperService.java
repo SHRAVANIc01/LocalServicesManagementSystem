@@ -31,7 +31,7 @@ public class DBhelperService {
 
         ArrayList<ServiceProviderClass> listitem = new ArrayList<>();
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = "http://192.168.1.5/Loginsignin/fetchData.php";
+        String url = "http://192.168.167.140/Loginsignin/fetchData.php";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -45,8 +45,9 @@ public class DBhelperService {
                         String address = jsonObject.getString("address");
                         String email = jsonObject.getString("email");
                         String service = jsonObject.getString("service");
+                        Long price = jsonObject.getLong("price");
 
-                        listitem.add(new ServiceProviderClass(name, email, address, service, phone));
+                        listitem.add(new ServiceProviderClass(name, email, address, service, phone, price));
                     }
                     callback.onDataFetched(listitem);
                 } catch (JSONException e) {

@@ -34,6 +34,7 @@ public class SettingsActivity extends AppCompatActivity {
         addservice.setOnClickListener(v -> {
             Intent intent = new Intent(this, AddServiceActivity.class);
             SettingsActivity.this.startActivity(intent);
+            finish();
         });
     }
 }

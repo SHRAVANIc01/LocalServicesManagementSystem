@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/background"
+    android:background="@drawable/gr25_1500_800"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
@@ -32,7 +32,7 @@
         android:hint="Your Service Name"
         android:inputType="text"
         android:padding="12dp"
-        android:textColorHint="#67009B"
+        android:textColorHint="#D6D6D6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/App_name" />
@@ -50,7 +50,7 @@
         android:hint="Service Address"
         android:inputType="text"
         android:padding="12dp"
-        android:textColorHint="#67009B"
+        android:textColorHint="#D6D6D6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/servicename" />
@@ -68,7 +68,7 @@
         android:hint="Service Contact"
         android:inputType="number"
         android:padding="12dp"
-        android:textColorHint="#67009B"
+        android:textColorHint="#D6D6D6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/address" />
@@ -84,7 +84,7 @@
         android:hint="Add Price"
         android:inputType="number"
         android:padding="12dp"
-        android:textColorHint="#67009B"
+        android:textColorHint="#D6D6D6"
         android:drawableLeft="@drawable/baseline_currency_rupee_24"
         android:drawablePadding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -102,7 +102,7 @@
         android:hint="Add password to confirm"
         android:inputType="textPassword"
         android:padding="12dp"
-        android:textColorHint="#67009B"
+        android:textColorHint="#D6D6D6"
         android:drawableLeft="@drawable/baseline_password_24"
         android:drawablePadding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -118,16 +118,16 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="72dp"
         android:alpha="0.7"
-        android:backgroundTint="#7FFBFF"
+        android:backgroundTint="#000000"
         android:text="ADD SERVICE"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <TextView
-        android:id="@+id/switchLog"
+        android:id="@+id/switchSetting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back to settings?"

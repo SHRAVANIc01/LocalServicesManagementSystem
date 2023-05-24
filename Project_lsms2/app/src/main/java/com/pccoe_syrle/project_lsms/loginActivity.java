@@ -57,7 +57,7 @@ public class loginActivity extends AppCompatActivity {
                     data[0] = susername;
                     data[1] = spassword;
 
-                    PutData pd = new PutData("http://192.168.1.5/Loginsignin/login.php","POST",field,data);
+                    PutData pd = new PutData("http://192.168.167.140/Loginsignin/login.php","POST",field,data);
                     if (pd.startPut()){
                         if(pd.onComplete()){
                             String result = pd.getResult();
