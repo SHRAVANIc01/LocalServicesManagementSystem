@@ -1,8 +1,30 @@
 package com.pccoe_syrle.project_lsms;
 
 public class ServiceProviderClass {
-    String name,email,address,service;
-    long phone;
+    String name;
+    String email;
+    String address;
+
+    public long getPrice() {
+        return price;
+    }
+
+    public void setPrice(long price) {
+        this.price = price;
+    }
+
+    String service;
+
+    public ServiceProviderClass(String name, String email, String address, String service, long phone, long price) {
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.service = service;
+        this.phone = phone;
+        this.price = price;
+    }
+
+    long phone,price;
 
     public ServiceProviderClass() {
         this.name = "hello";

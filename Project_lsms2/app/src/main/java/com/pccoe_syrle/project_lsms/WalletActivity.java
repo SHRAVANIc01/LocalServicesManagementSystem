@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.pccoe_syrle.project_lsms.DBhelper.DBbalanceUpdate;
+
 public class WalletActivity extends AppCompatActivity {
 
     static TextView amount;
@@ -28,17 +30,20 @@ public class WalletActivity extends AppCompatActivity {
         balance = findViewById(R.id.editTextNumber);
         amount = findViewById(R.id.amount);
         sharedPreferences = getSharedPreferences("LSMSshared", MODE_PRIVATE);
+        long bal = sharedPreferences.getLong("balance",0);
+        amount.setText(bal+"");
 
         addBalance.setOnClickListener(v -> {
-            int a = Integer.parseInt(balance.getText().toString());
-            int b = Integer.parseInt(amount.getText().toString());
+            long a = Integer.parseInt(balance.getText().toString());
+            long b = Integer.parseInt(amount.getText().toString());
 
             amount.setText((a+b)+"");
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("balance",(a+b)+"");
+            editor.putLong("balance",(a+b));
             editor.apply();
+
+            DBbalanceUpdate.updateBalance((a+b), getApplicationContext(), sharedPreferences.getString("email",""));
         });
-        String bal = sharedPreferences.getString("balance","");
-        amount.setText(bal);
+
     }
 }

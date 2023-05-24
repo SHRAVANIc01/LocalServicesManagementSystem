@@ -1,5 +1,7 @@
 package com.pccoe_syrle.project_lsms.ui.home;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,10 +32,13 @@ import java.util.ArrayList;
 public class HomeFragment extends Fragment {
     JSONArray jsonArray;
     LinearLayout trending;
+    long price;
     RecyclerView displayServices, topRated, recentlyViewed;
     private FragmentHomeBinding binding;
     ServiceProviderClass people;
     ServiceProviderAdapter serviceProviderAdapter;
+
+    SharedPreferences sharedPreferences;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -51,6 +56,7 @@ public class HomeFragment extends Fragment {
         ArrayList<ServiceProviderClass> serviceProviderList = new ArrayList<>();
         people = new ServiceProviderClass();
         trending = binding.trendingButton;
+        sharedPreferences = getActivity().getSharedPreferences("LSMSshared", Context.MODE_PRIVATE);
 
         LinearLayoutManager llm = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL, false);
         topRated.setLayoutManager(llm);
@@ -70,8 +76,11 @@ public class HomeFragment extends Fragment {
         DBhelperService.fetchData(getContext(), new DBhelperService.DataCallback() {
             @Override
             public void onDataFetched(ArrayList<ServiceProviderClass> listitem) {
-                serviceProviderList.addAll(listitem);
-                serviceProviderAdapter.notifyDataSetChanged();
+                if (!listitem.isEmpty()) {
+                    serviceProviderList.addAll(listitem);
+                    price = listitem.get(0).getPrice();
+                    serviceProviderAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override
@@ -79,6 +88,10 @@ public class HomeFragment extends Fragment {
                 Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
             }
         });
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putLong("price",price);
+        editor.apply();
 
         return root;
     }

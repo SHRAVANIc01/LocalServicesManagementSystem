@@ -2,10 +2,13 @@ package com.pccoe_syrle.project_lsms;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -29,6 +32,7 @@ public class AddServiceActivity extends AppCompatActivity {
     EditText sName , sAddress , sPrice, sPassword, sPhone;
     Button AddService;
     SharedPreferences sharedPreferences;
+    TextView backToSetting;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,6 +45,7 @@ public class AddServiceActivity extends AppCompatActivity {
         sPassword = findViewById(R.id.password);
         sPhone = findViewById(R.id.phoneNumber);
         AddService = findViewById(R.id.buttonAddService);
+        backToSetting = findViewById(R.id.switchSetting);
 
         sharedPreferences = getSharedPreferences("LSMSshared", Context.MODE_PRIVATE);
 
@@ -52,7 +57,7 @@ public class AddServiceActivity extends AppCompatActivity {
             long phone = Integer.parseInt(sPhone.getText().toString());
 
             RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-            String url ="http://192.168.1.5/Loginsignin/AddService.php";
+            String url ="http://192.168.167.140/Loginsignin/AddService.php";
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                 @Override
@@ -83,6 +88,12 @@ public class AddServiceActivity extends AppCompatActivity {
                 }
             };
             queue.add(stringRequest);
+        });
+
+        backToSetting.setOnClickListener(v -> {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            AddServiceActivity.this.startActivity(intent);
+            finish();
         });
     }
 }

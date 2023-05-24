@@ -82,7 +82,7 @@ public class signInActivity extends AppCompatActivity {
                         data[4] = semail;
                         data[5] = spassword;
 
-                        PutData pd = new PutData("http://192.168.1.5/Loginsignin/signup.php","POST",field,data);
+                        PutData pd = new PutData("http://192.168.167.140/Loginsignin/signup.php","POST",field,data);
                         if (pd.startPut()){
                             if(pd.onComplete()){
                                 String result = pd.getResult();

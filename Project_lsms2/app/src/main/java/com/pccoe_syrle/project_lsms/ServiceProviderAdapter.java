@@ -3,6 +3,7 @@ package com.pccoe_syrle.project_lsms;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import java.util.List;
 public class ServiceProviderAdapter extends RecyclerView.Adapter<ServiceProviderAdapter.ServiceHolder>{
 
     List<ServiceProviderClass> mList;
+    SharedPreferences sharedPreferences;
 
     public ServiceProviderAdapter(List<ServiceProviderClass> list) {
         this.mList = list;
@@ -54,6 +56,7 @@ public class ServiceProviderAdapter extends RecyclerView.Adapter<ServiceProvider
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     ServiceProviderClass serviceProvider = mList.get(getAdapterPosition());
+
 
                                     Intent intent = new Intent(itemView.getContext(), ServiceDetailsActivity.class);
                                     itemView.getContext().startActivity(intent);
