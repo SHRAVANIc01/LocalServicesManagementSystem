@@ -8,8 +8,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             $data = mysqli_query($db->dbConnect(), $sql);
             $row = mysqli_fetch_assoc($data);
             $result = array("status" => "Login Success" , "email" => $row['Email'], "username" => $row['Username']);
-            echo json_encode($result, JSON_PRETTY_PRINT);
-        } else echo "Username or Password wrong";
-    } else echo "Error: Database connection";
-} else echo "All fields are required";
+        } else $result = array("status" => "Username or Password wrong");
+    } else $result = array("status" => "Error: Database connection");
+} else $result = array("status" => "All fields are required");
+
+echo json_encode($result, JSON_PRETTY_PRINT);
 ?>

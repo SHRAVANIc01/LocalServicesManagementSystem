@@ -49,7 +49,7 @@ public class signInActivity extends AppCompatActivity {
             }
         };
 
-        ss.setSpan(cs, 26,31, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        ss.setSpan(cs, 25,31, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         login.setText(ss);
         login.setMovementMethod(LinkMovementMethod.getInstance());
 

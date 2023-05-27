@@ -13,7 +13,7 @@ if($connect){
     if($num != 0){
         while($row = mysqli_fetch_assoc($data)){
             $result = array("status" => "success","name" => $row['Name'], "phonenumber" => $row['Phonenumber'] , "email" => $row['Email'], "address" => 
-                        $row['Address'], "service" => $row['Service']);
+                        $row['Address'], "service" => $row['Service'], "price" => $row['Price']);
             $send[] = $result;
         }
     } else $result = array("status" => "failure", "message" => "failed to retrieve data");
